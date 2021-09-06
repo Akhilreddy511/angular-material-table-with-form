@@ -37,6 +37,17 @@
           </mat-form-field>
         </mat-cell>
       </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let element;" [formGroup]="element">
+          {{element.hasError('pattern', 'title')}}
+          {{element.hasError('required', 'title')}}
+          {{element.hasError('pattern', 'title') && element.hasError('required', 'title')}}
+          <button [disabled]="!element.hasError('pattern', 'title') && element.hasError('required', 'title')">
+            save
+          </button>
+        </mat-cell>
+      </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

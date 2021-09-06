@@ -14,7 +14,7 @@ import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
 export class AppComponent implements OnInit {
   form: FormGroup;
   users: User[] = [];
-  displayedColumns = ['id', 'userId', 'title'];
+  displayedColumns = ['id', 'userId', 'title', 'action'];
   constructor(
     private _albumService: AlbumService,
     private _userService: UserService,
