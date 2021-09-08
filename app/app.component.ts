@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
     // Notice the ngIf at the title cell definition. The user with id 3 can't set the title of the albums
   }
     addRow() {
-      this.albums.push(this.addNewTransaction());
+      this.albums.insert(1,this.addNewTransaction());
       // this.albums.controls.push(this.addNewTransaction())
       // this.form.setControl('albums', fg);
       console.log("albums.controls",this.albums.controls)
