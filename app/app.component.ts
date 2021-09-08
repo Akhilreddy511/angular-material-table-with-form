@@ -5,8 +5,8 @@ import { AlbumService } from './album.service';
 import { UserService } from './user.service';
 import { Album } from './album.model';
 import { User } from './user.model';
-import { FormArray, FormGroup, FormBuilder } from '@angular/forms';
-
+import { FormArray, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+// import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'table-form-app',
   templateUrl: 'app.component.html'
@@ -32,6 +32,10 @@ export class AppComponent implements OnInit {
     this._userService.getAll().subscribe(users => {
       this.users = users;
     });
+
+  
+
+    // { "userId": 7, "id": 9, "title": null }
   }
 
   get albums(): FormArray {
@@ -46,4 +50,21 @@ export class AppComponent implements OnInit {
     title.markAsUntouched();
     // Notice the ngIf at the title cell definition. The user with id 3 can't set the title of the albums
   }
+    addRow() {
+      this.albums.push(this.addNewTransaction());
+      // this.albums.controls.push(this.addNewTransaction())
+      // this.form.setControl('albums', fg);
+      console.log("albums.controls",this.albums.controls)
+      this.albums.controls =this.albums.controls
+      // OR IN ES6 
+      let cloned = [...this.albums.controls]
+      this.albums.controls = cloned
+    }
+
+    addNewTransaction(newField?: any): FormGroup {
+      console.log("formObject", newField);
+      return this._formBuilder.group({
+        "userId": 3, "id": 13, "title": "test" 
+      });
+    }
 }
