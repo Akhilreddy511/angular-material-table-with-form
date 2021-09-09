@@ -29,7 +29,7 @@
       <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
         <mat-cell *matCellDef="let element; let i =index" [formGroup]="element">
-          {{i}}
+          {{i }}{{element.get('userId').value !== 3}} {{element.get('userId').value}}
           <mat-form-field floatLabel="never" *ngIf="element.get('userId').value !== 3">
             <input matInput placeholder="Title" formControlName="title" required>
             <mat-error *ngIf="element.hasError('pattern', 'title')">

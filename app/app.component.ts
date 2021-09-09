@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
     addNewTransaction(newField?: any): FormGroup {
       console.log("formObject", newField);
       return this._formBuilder.group({
-        "userId": 3, "id": 13, "title": "test" 
+        "userId": 4, "id": 13, "title": "quam nostrum impedit mollitia quod et dolor" 
       });
     }
 }
